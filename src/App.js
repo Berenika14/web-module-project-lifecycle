@@ -14,12 +14,31 @@ class App extends React.Component {
     axios
       .get(`https://api.github.com/users/${this.state.currentUser}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         this.setState({
           ...this.state,
           user: res.data,
         });
+      })
+      .catch((err) => {
+        console.error(err);
       });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.user !== prevState.user) {
+      axios
+        .get(`https://api.github.com/users/${this.state.currentUser}/followers`)
+        .then((res) => {
+          // console.log(res);
+          this.setState({
+            ...this.state,
+            followers: res.data,
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }
   render() {
     return (
