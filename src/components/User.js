@@ -2,18 +2,16 @@ import React from "react";
 
 class User extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <div id="UserCard">
-        <img
-          width="200px"
-          src="https://avatars.githubusercontent.com/u/91492156?v=4"
-        />
-        <a href="https://github.com/Berenika14">
-          <h3>Berenika Ahmetaj</h3>
+        <img width="200px" src={this.props.user.avatar_url} />
+        <a href={this.props.user.html_url}>
+          <h3>{this.props.user.name}</h3>
         </a>
-        <p>(Software Developer)</p>
-        <p>Total Repos: 35 </p>
-        <p>Total followers:16</p>
+        <p>({this.props.user.login})</p>
+        <p>Total Repos: {this.props.user.public_repos} </p>
+        <p>Total followers:{this.props.user.followers}</p>
       </div>
     );
   }
