@@ -40,13 +40,36 @@ class App extends React.Component {
         });
     }
   }
+  changeHandler = (e) => {
+    this.setState({
+      ...this.setState,
+      currentUser: e.target.value,
+    });
+  };
+
+  handleClick = (e) => {
+    e.preventDefault();
+    axios
+      .get(`https://api.github.com/users/${this.state.currentUser}`)
+      .then((res) => {
+        // console.log(res);
+        this.setState({
+          ...this.state,
+          user: res.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   render() {
+    // console.log(this.state);
     return (
       <div>
         <h1>GITHUB INFO</h1>
         <form>
-          <input placeholder="Github handler" />
-          <button>Search</button>
+          <input onChange={this.changeHandler} placeholder="Github handler" />
+          <button onClick={this.handleClick}>Search</button>
         </form>
         <User user={this.state.user} />
         <FollowerList followers={this.state.followers} />

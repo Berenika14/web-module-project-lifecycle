@@ -2,7 +2,7 @@ import React from "react";
 
 class Follower extends React.Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="follower">
         <img width="200px" src={this.props.follower.avatar_url} />
