@@ -5,7 +5,11 @@ class User extends React.Component {
     console.log(this.props);
     return (
       <div id="UserCard">
-        <img width="200px" src={this.props.user.avatar_url} />
+        <img
+          width="200px"
+          style={{ marginTop: "1.5%", borderRadius: "5px" }}
+          src={this.props.user.avatar_url}
+        />
         <a href={this.props.user.html_url}>
           <h3>{this.props.user.name}</h3>
         </a>

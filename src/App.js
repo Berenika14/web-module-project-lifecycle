@@ -68,10 +68,20 @@ class App extends React.Component {
       <div>
         <h1>GITHUB INFO</h1>
         <form>
-          <input onChange={this.changeHandler} placeholder="Github handler" />
-          <button onClick={this.handleClick}>Search</button>
+          <input
+            style={{ padding: "5px", borderRadius: "3px" }}
+            onChange={this.changeHandler}
+            placeholder="Github handler"
+          />
+          <button
+            style={{ padding: "5px", borderRadius: "3px" }}
+            onClick={this.handleClick}
+          >
+            Search
+          </button>
         </form>
         <User user={this.state.user} />
+
         <FollowerList followers={this.state.followers} />
       </div>
     );
